@@ -1,2 +1,0 @@
-# bancodealimentos
-Banco de Alimentos
