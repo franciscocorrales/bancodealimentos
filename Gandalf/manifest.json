@@ -1,0 +1,55 @@
+{
+    "manifest_version": 3,
+    "name": "Gandalf",
+    "version": "1.0.37",
+    "description": "Automates various tasks on different websites",
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.0xxx.ws/*",
+                "*://*.chaturbate.com/*",
+                "*://web.whatsapp.com/*",
+                "*://*.youtube.com/*",
+                "*://bancodealimentos.or.cr/*"
+            ],
+            "js": [
+                "config.js",
+                "ui.js",
+                "products.js",
+                "handlers/0xxx.js",
+                "handlers/chaturbate.js",
+                "handlers/whatsapp.js",
+                "handlers/youtube.js",
+                "handlers/bancodealimentos.js",
+                "content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "config.js",
+                "ui.js",
+                "handlers/*.js"
+            ],
+            "matches": [
+                "*://*.0xxx.ws/*",
+                "*://*.chaturbate.com/*"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
