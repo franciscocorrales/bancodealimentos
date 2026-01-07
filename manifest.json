@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Banco de Alimentos",
+    "version": "1.0.1",
+    "description": "Banco de Alimentos",
+    
+    "content_scripts": [
+        {
+            "matches": [
+                "*://bancodealimentos.or.cr/*",
+                "*://www.bancodealimentos.or.cr/*"
+            ],
+            "js": [
+                "config.js",
+                "ui.js",
+                "products.js",
+                "handlers/bancodealimentos.js",
+                "content.js"
+            ]
+        }
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
