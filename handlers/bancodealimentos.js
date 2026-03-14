@@ -14,7 +14,7 @@ function bancodealimentosHandler() {
     let controlPanel = null;
     let isUIVisible = false;
 
-    gandalfSpeaks.log(CONFIG.MESSAGES.HANDLER_INIT('Banco de Alimentos'));
+    bancoLog.log(CONFIG.MESSAGES.HANDLER_INIT('Banco de Alimentos'));
 
     // Use the products from the separate products.js file
     const products = BANCO_PRODUCTS;
@@ -89,14 +89,14 @@ function bancodealimentosHandler() {
     }
 
     /**
-     * Creates and displays the main UI interface using enhanced GandalfUI
+     * Creates and displays the main UI interface using enhanced BancoUI
      */
     function createUI() {
         // Set the Banco de Alimentos theme
-        GandalfUI.setTheme('bancoAlimentos');
+        BancoUI.setTheme('bancoAlimentos');
 
         // Create the advanced panel
-        controlPanel = GandalfUI.createAdvancedPanel({
+        controlPanel = BancoUI.createAdvancedPanel({
             title: 'Banco de Alimentos',
             icon: '🛒',
             position: { top: '20px', right: '20px' },
@@ -180,7 +180,7 @@ function bancodealimentosHandler() {
             if (isMonitoring) {
                 stopProductMonitoring();
             }
-            gandalfSpeaks.log('🙈 Panel cerrado por el usuario');
+            bancoLog.log('🙈 Panel cerrado por el usuario');
         };
 
         updateUI();
@@ -262,7 +262,7 @@ function bancodealimentosHandler() {
                     });
                 }
             } catch (error) {
-                gandalfSpeaks.log('Error processing product:', error);
+                bancoLog.log('Error processing product:', error);
             }
         });
 
@@ -300,7 +300,7 @@ function bancodealimentosHandler() {
         const jsonLines = newProducts.map(product =>
             `{ id: ${product.id}, qty: BANCO_CONFIG.QTY, name: '${product.name.replace(/'/g, "\\'")}', referrer: \`\${BANCO_CONFIG.SHOP_URL}${product.referrerPath}\` },`
         );
-        gandalfSpeaks.log('New products for copy-paste: \n ', jsonLines.join('\n'));
+        bancoLog.log('New products for copy-paste: \n ', jsonLines.join('\n'));
     }
 
     /**
@@ -363,7 +363,7 @@ function bancodealimentosHandler() {
         controlPanel.log('🎉 Proceso de agregado completado');
 
         // Show success notification
-        GandalfUI.showNotification(`🛒 ${activeProducts.length} productos agregados al carrito!`, {
+        BancoUI.showNotification(`🛒 ${activeProducts.length} productos agregados al carrito!`, {
             type: 'success',
             duration: 4000,
             icon: '🎉'
@@ -385,10 +385,10 @@ function bancodealimentosHandler() {
         controlPanel.log(`🎯 ${message}`);
 
         // Play initial notification sound
-        GandalfUI.playNotificationSound(800, 0.5, 0.3);
+        BancoUI.playNotificationSound(800, 0.5, 0.3);
 
         // Show persistent notification
-        GandalfUI.showNotification(message, {
+        BancoUI.showNotification(message, {
             type: 'warning',
             duration: 8000,
             icon: '🚨'
@@ -396,7 +396,7 @@ function bancodealimentosHandler() {
 
         soundInterval = setInterval(() => {
             if (isAlerting) {
-                GandalfUI.playNotificationSound(1000, 0.3, 0.2);
+                BancoUI.playNotificationSound(1000, 0.3, 0.2);
                 controlPanel.log(`🔔 ALERTA: ${message}`);
             }
         }, 5000);
@@ -411,10 +411,10 @@ function bancodealimentosHandler() {
         controlPanel.log('🔔 Probando sistema de alertas...');
 
         // Play single notification sound
-        GandalfUI.playNotificationSound(800, 0.5, 0.3);
+        BancoUI.playNotificationSound(800, 0.5, 0.3);
 
         // Show test notification
-        GandalfUI.showNotification('🔔 Test de alerta - Sistema funcionando correctamente', {
+        BancoUI.showNotification('🔔 Test de alerta - Sistema funcionando correctamente', {
             type: 'info',
             duration: 3000,
             icon: '🔔'
@@ -438,7 +438,7 @@ function bancodealimentosHandler() {
 
         controlPanel.log('🛑 Alertas persistentes detenidas');
 
-        GandalfUI.showNotification('🔇 Alertas detenidas', {
+        BancoUI.showNotification('🔇 Alertas detenidas', {
             type: 'info',
             duration: 2000,
             icon: '🛑'
@@ -489,7 +489,7 @@ function bancodealimentosHandler() {
         } catch (error) {
             controlPanel.log(`❌ Error verificando productos: ${error.message}`);
 
-            GandalfUI.showNotification(`❌ Error: ${error.message}`, {
+            BancoUI.showNotification(`❌ Error: ${error.message}`, {
                 type: 'error',
                 duration: 4000,
                 icon: '⚠️'
@@ -563,7 +563,7 @@ function bancodealimentosHandler() {
             controlPanel.log('✅ ¡Monitoreo automático iniciado!');
             updateUI();
 
-            GandalfUI.showNotification('🚀 Monitoreo iniciado exitosamente', {
+            BancoUI.showNotification('🚀 Monitoreo iniciado exitosamente', {
                 type: 'success',
                 duration: 3000,
                 icon: '🔄'
@@ -573,7 +573,7 @@ function bancodealimentosHandler() {
             controlPanel.log(`❌ Error al obtener conteo inicial: ${error.message}`);
             controlPanel.log('❌ No se pudo iniciar el monitoreo');
 
-            GandalfUI.showNotification(`❌ Error iniciando monitoreo: ${error.message}`, {
+            BancoUI.showNotification(`❌ Error iniciando monitoreo: ${error.message}`, {
                 type: 'error',
                 duration: 4000,
                 icon: '⚠️'
@@ -602,7 +602,7 @@ function bancodealimentosHandler() {
         controlPanel.log('🛑 Monitoreo automático detenido');
         updateUI();
 
-        GandalfUI.showNotification('🛑 Monitoreo detenido', {
+        BancoUI.showNotification('🛑 Monitoreo detenido', {
             type: 'info',
             duration: 2000,
             icon: '⏹️'
@@ -622,7 +622,7 @@ function bancodealimentosHandler() {
   - Alertas activas: ${isAlerting ? 'Sí' : 'No'}
   - Intervalo de sonido: ${soundInterval ? '5 segundos' : 'No configurado'}`;
 
-        gandalfSpeaks.log(status);
+        bancoLog.log(status);
         controlPanel.log('📊 Estado del monitoreo consultado');
         return status;
     }
@@ -657,7 +657,7 @@ function bancodealimentosHandler() {
         controlPanel.log(`📦 Productos activos (qty > 0): ${products.filter(p => p.qty > 0).length}`);
 
         // Show welcome notification
-        GandalfUI.showNotification('🛒 Banco de Alimentos Assistant Ready!', {
+        BancoUI.showNotification('🛒 Banco de Alimentos Assistant Ready!', {
             type: 'success',
             duration: 4000,
             sound: true,
@@ -698,9 +698,9 @@ function bancodealimentosHandler() {
             }
         };
 
-        gandalfSpeaks.log(`
+        bancoLog.log(`
             🛒 BANCO DE ALIMENTOS ASSISTANT LOADED:
-            ✅ Enhanced UI created with GandalfUI!
+            ✅ Enhanced UI created with BancoUI!
             ✅ ${products.length} products configured
             ✅ ${products.filter(p => p.qty > 0).length} active products ready
 
