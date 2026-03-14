@@ -1,6 +1,6 @@
 # Banco de Alimentos - Chrome Extension
 
-A Chrome/Brave extension for [Banco de Alimentos de Costa Rica](https://bancodealimentos.or.cr) that helps monitor product availability and manage cart operations.
+A Chrome/Brave extension that helps monitor product availability and manage cart operations.
 
 ## Features
 
