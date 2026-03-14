@@ -1,8 +1,8 @@
 // =============================================================================
-// ENHANCED GANDALF UI SYSTEM - Professional floating UI components
+// ENHANCED UI SYSTEM - Professional floating UI components
 // =============================================================================
 
-const GandalfUI = {
+const BancoUI = {
     // Advanced styling system with modern aesthetics
     themes: {
         bancoAlimentos: {
@@ -26,7 +26,7 @@ const GandalfUI = {
     // Active theme
     currentTheme: 'bancoAlimentos',
 
-    // Base styles for all Gandalf UI elements
+    // Base styles for all UI elements
     getBaseStyles() {
         const theme = this.themes[this.currentTheme];
         return {
@@ -56,9 +56,9 @@ const GandalfUI = {
     setTheme(themeName) {
         if (this.themes[themeName]) {
             this.currentTheme = themeName;
-            gandalfSpeaks.log(`🎨 GandalfUI theme set to: ${themeName}`);
+            bancoLog.log(`🎨 UI theme set to: ${themeName}`);
         } else {
-            gandalfSpeaks.warn(`⚠️ Theme "${themeName}" not found. Available themes:`, Object.keys(this.themes));
+            bancoLog.warn(`⚠️ Theme "${themeName}" not found. Available themes:`, Object.keys(this.themes));
         }
     },
 
@@ -143,7 +143,7 @@ const GandalfUI = {
     createAdvancedPanel(options = {}) {
         const theme = this.themes[this.currentTheme];
         const {
-            title = 'Gandalf Panel',
+            title = 'Panel',
             position = { top: '20px', right: '20px' },
             width = '350px',
             maxHeight = '2000px',
@@ -159,7 +159,7 @@ const GandalfUI = {
         const activeTheme = customTheme || theme;
 
         const panel = document.createElement('div');
-        panel.className = 'gandalf-advanced-panel';
+        panel.className = 'banco-advanced-panel';
 
         Object.assign(panel.style, {
             position: 'fixed',
@@ -185,7 +185,7 @@ const GandalfUI = {
 
         // Create enhanced header with gradient
         const header = document.createElement('div');
-        header.className = 'gandalf-panel-header';
+        header.className = 'banco-panel-header';
         header.style.cssText = `
             background: linear-gradient(135deg, ${activeTheme.primary}, ${activeTheme.primaryDark});
             color: white;
@@ -260,7 +260,7 @@ const GandalfUI = {
         // Create main content container
         const content = document.createElement('div');
         content.id = `panel-content-${Date.now()}`;
-        content.className = 'gandalf-panel-content';
+        content.className = 'banco-panel-content';
         content.style.cssText = `
             padding: 20px;
             overflow-y: auto;
@@ -275,7 +275,7 @@ const GandalfUI = {
         // Add resize handle if resizable
         if (resizable) {
             const resizeHandle = document.createElement('div');
-            resizeHandle.className = 'gandalf-resize-handle';
+            resizeHandle.className = 'banco-resize-handle';
             resizeHandle.style.cssText = `
                 position: absolute;
                 bottom: 0;
@@ -368,7 +368,7 @@ const GandalfUI = {
             } = statusConfig;
 
             const statusSection = document.createElement('div');
-            statusSection.className = 'gandalf-status-section';
+            statusSection.className = 'banco-status-section';
             statusSection.style.cssText = `
                 background: ${backgroundColor};
                 border: 1px solid ${borderColor};
@@ -409,7 +409,7 @@ const GandalfUI = {
             } = buttonsConfig;
 
             const buttonGrid = document.createElement('div');
-            buttonGrid.className = 'gandalf-button-grid';
+            buttonGrid.className = 'banco-button-grid';
             buttonGrid.style.cssText = `
                 display: grid;
                 grid-template-columns: repeat(${columns}, 1fr);
@@ -439,7 +439,7 @@ const GandalfUI = {
             } = logConfig;
 
             const logSection = document.createElement('div');
-            logSection.className = 'gandalf-log-section';
+            logSection.className = 'banco-log-section';
             logSection.style.cssText = `
                 background: ${backgroundColor};
                 border: 1px solid ${borderColor};
@@ -458,7 +458,7 @@ const GandalfUI = {
 
             const logContainer = document.createElement('div');
             logContainer.id = `activity-log-${Date.now()}`;
-            logContainer.className = 'gandalf-activity-log';
+            logContainer.className = 'banco-activity-log';
             logContainer.style.cssText = `
                 font-size: 11px;
                 color: #6c757d;
@@ -497,7 +497,7 @@ const GandalfUI = {
                     logContainer.removeChild(logContainer.children[0]);
                 }
 
-                gandalfSpeaks.log(`[${timestamp}] ${message}`);
+                bancoLog.log(`[${timestamp}] ${message}`);
             };
 
             return logSection;
@@ -629,7 +629,7 @@ const GandalfUI = {
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + duration);
         } catch (error) {
-            gandalfSpeaks.warn('🔇 Could not play notification sound:', error.message);
+            bancoLog.warn('🔇 Could not play notification sound:', error.message);
         }
     },
 
