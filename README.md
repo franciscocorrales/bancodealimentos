@@ -28,6 +28,18 @@ Edit `products.js` to customize which products to monitor and their quantities. 
 
 The default quantity for all products is controlled by `BANCO_CONFIG.QTY` in the same file.
 
+## 📦 Packaging
+
+1. Create the zip (run from the project root):
+
+   ```bash
+   zip -r BancoAlimentos.zip . -x "*.git*"
+   ```
+
+2. Go to the [Chrome Web Store Developer Console](https://chrome.google.com/webstore/devconsole/).
+3. Select the extension, click **Package** → **Upload new package**, and upload the zip.
+4. Click **Submit for review**.
+   
 ## License
 
 GPL-3.0
