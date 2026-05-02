@@ -1,45 +1,8 @@
-# Banco de Alimentos - Chrome Extension
+# Moved to Codeberg
 
-A Chrome/Brave extension that helps monitor product availability and manage cart operations.
+This repository has moved to Codeberg:
 
-## Features
+**➜ https://codeberg.org/francisco_corrales/bancodealimentos**
 
-- **Product Monitoring** — Automatically checks for new product availability every 60 seconds
-- **Bulk Add to Cart** — Adds all configured products to the shopping cart in one click
-- **Product Extraction** — Scrapes product info from the current page for easy configuration
-- **Sound Alerts** — Persistent audio notifications when new products appear
-- **Draggable UI Panel** — Floating control panel with activity log and status indicators
-
-## Installation
-
-1. Clone this repository
-2. Open `chrome://extensions/` (or `brave://extensions/`)
-3. Enable **Developer mode**
-4. Click **Load unpacked** and select this folder
-
-## Configuration
-
-Edit `products.js` to customize which products to monitor and their quantities. Each product entry has:
-
-- `id` — Product ID from the website
-- `qty` — Quantity to add to cart (set to `0` to skip)
-- `name` — Product display name
-- `referrer` — Product page URL
-
-The default quantity for all products is controlled by `BANCO_CONFIG.QTY` in the same file.
-
-## 📦 Packaging
-
-1. Create the zip (run from the project root):
-
-   ```bash
-   zip -r BancoAlimentos.zip . -x "*.git*"
-   ```
-
-2. Go to the [Chrome Web Store Developer Console](https://chrome.google.com/webstore/devconsole/).
-3. Select the extension, click **Package** → **Upload new package**, and upload the zip.
-4. Click **Submit for review**.
-   
-## License
-
-GPL-3.0
+Codeberg is a free, open source, and community-maintained Git hosting platform.
+This GitHub repo is no longer maintained.
